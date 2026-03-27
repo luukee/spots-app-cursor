@@ -1,0 +1,126 @@
+---
+description: Comprehensive guidelines for optimizing Cursor AI editor usage in the SPOTS healthcare application, covering AI assistant best practices, code generation patterns, healthcare compliance considerations, and project-specific development workflows.
+globs: 
+alwaysApply: true
+---
+
+# Cursor Editor Optimization for SPOTS
+
+## 🤖 AI Assistant Best Practices
+
+### Code Generation Patterns
+
+- **Always suggest TypeScript interfaces** for new data structures
+- **Prefer custom hooks** for business logic (e.g., `useSymptomCart`, `useSearchResults`)
+- **Generate comprehensive JSDoc comments** for complex functions
+- **Suggest error boundaries** for new pages/components
+- **Recommend service layer patterns** for API integration
+
+### Context-Aware Suggestions
+
+- **Reference existing patterns** from similar files in the codebase
+- **Suggest refactoring opportunities** when code duplication is detected
+- **Flag potential security issues** related to healthcare data
+- **Recommend accessibility improvements** for pediatric users
+- **Suggest performance optimizations** for React components
+
+### File Organization
+
+- **Maintain consistent file structure** following Next.js App Router conventions
+- **Suggest proper import organization** (React, Next.js, AWS, custom)
+- **Recommend appropriate component placement** (client vs server)
+- **Flag missing type definitions** for business logic
+
+## 🔧 Cursor-Specific Features
+
+### Chat Integration
+
+- **Use `/` commands** for quick file operations and code generation
+- **Leverage chat for debugging** complex business logic issues
+- **Ask for code reviews** before implementing major changes
+- **Request documentation** for new features or APIs
+
+### Code Navigation
+
+- **Use Cmd/Ctrl + P** for quick file navigation
+- **Leverage Cmd/Ctrl + Shift + P** for command palette
+- **Use F12** for definition jumping in TypeScript files
+- **Utilize breadcrumbs** for quick file hierarchy navigation
+
+### AI Code Completion
+
+- **Trust tab completion** for repetitive patterns
+- **Use AI for boilerplate generation** (components, hooks, services)
+- **Leverage AI for test generation** for business logic
+- **Use AI for documentation** and comments
+
+## 📁 Project-Specific Optimizations
+
+### Healthcare Compliance
+
+- **Always flag HIPAA-related concerns** in code suggestions
+- **Suggest audit trails** for data access
+- **Recommend encryption** for sensitive data handling
+- **Flag potential privacy violations** in user interactions
+
+### AWS Amplify Integration
+
+- **Suggest proper Amplify patterns** for authentication
+- **Recommend Data client usage** for database operations
+- **Flag incorrect Amplify configurations**
+- **Suggest proper error handling** for AWS services
+
+### Next.js App Router
+
+- **Recommend proper server/client component usage**
+- **Suggest optimal data fetching patterns**
+- **Flag incorrect routing patterns**
+- **Recommend proper metadata handling**
+
+## 🎯 Developer 3 Focus Areas
+
+### Business Logic Development
+
+- **Prioritize business logic over UI components**
+- **Suggest service layer patterns** for complex operations
+- **Recommend state management solutions** for symptoms/cart
+- **Flag business rule violations** in code
+
+### Integration Tasks
+
+- **Suggest proper API integration patterns**
+- **Recommend error handling** for external services
+- **Flag missing validation** for user inputs
+- **Suggest proper data transformation** patterns
+
+### Code Quality
+
+- **Flag code smells** and suggest improvements
+- **Recommend refactoring opportunities**
+- **Suggest performance optimizations**
+- **Flag potential bugs** in business logic
+
+## 🚀 Advanced Cursor Features
+
+### Multi-File Operations
+
+- **Use AI for cross-file refactoring**
+- **Leverage AI for dependency updates**
+- **Use AI for configuration file management**
+- **Request AI assistance for deployment scripts**
+
+### Debugging Assistance
+
+- **Ask AI to analyze error logs**
+- **Request debugging strategies** for complex issues
+- **Use AI for performance profiling** suggestions
+- **Leverage AI for security vulnerability analysis**
+
+### Documentation Generation
+
+- **Request API documentation** for new endpoints
+- **Ask for component documentation** with examples
+- **Generate README updates** for new features
+- **Create changelog entries** for releases description: globs: alwaysApply: false
+
+---

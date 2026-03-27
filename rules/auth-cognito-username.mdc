@@ -1,0 +1,33 @@
+---
+description: Cognito username and REDCap spots_user_id identity (post-migration)
+globs: 
+alwaysApply: false
+---
+# Cognito Username & REDCap Identity (Migration)
+
+## Summary
+SPOTS uses a **Cognito username migration** so that REDCap lookup uses a stable identity: for sign-up users the app uses a **custom username** that must match REDCap `spots_user_id`; for Google users we fall back to email. The source of truth for "who is this user in REDCap?" is **`cognito:username`** (the Cognito "User name" field). When `preferred_username` is explicitly set we may use it as a fallback; in practice it is often unset, so **cognito:username** is the canonical REDCap identity.
+
+## Cognito: username vs preferred_username
+- **`cognito:username`** (Cognito’s "User name"): Cognito’s internal, immutable unique identifier. For sign-up (username+password) it is the username the user chose and must match REDCap `spots_user_id`. For federated (e.g. Google) sign-in it is typically a generated value; we then use email for REDCap.
+- **`preferred_username`**: An optional custom attribute. In our pool it is often **not set**; when set it can match REDCap `spots_user_id`. Do not rely on it for REDCap—use **cognito:username** for sign-up users.
+- **Which one SPOTS uses:** For “who is this user in REDCap?” we use **`cognito:username`** (Cognito "User name") as the primary identity. We send `preferred_username ?? cognito:username` as `spots_user_id`; when `preferred_username` is undefined (as in our pool), that is **cognito:username**. For Google users we fall back to email.
+- **Full doc:** [docs/cognito/username-vs-preferred-username.md](docs/cognito/username-vs-preferred-username.md).
+- **Naming:** `cognito:username` (JWT claim) = `cognito_username` (same thing). Treat **cognito_username** as the permanent ID for REDCap; **preferred_username** is for display only (e.g. synced from REDCap `first_name` if we use it).
+
+## Identity flow
+- **Sign-up (email/password):** User chooses a username at sign-up that must match the REDCap `spots_user_id` they were given. That value becomes the Cognito "User name" (`cognito:username`). Login and validation use **cognito:username** for REDCap lookup (sent as `spots_user_id`).
+- **Google sign-in:** No custom username. REDCap lookup uses **email** (from id token or user attributes). Backend still receives `spots_user_id` in the login payload; when missing we send email.
+- **After login:** `getSpotsUserIdForValidation()` in [app/_lib/services/auth/login-service.ts](app/_lib/services/auth/login-service.ts) reads `preferred_username ?? cognito:username` from the id token. In our pool that is effectively **cognito:username**. That value is sent as `spots_user_id` to `POST /api/auth/login` and used for REDCap validation.
+
+## Key code
+- **Extract identity for validation:** `getSpotsUserIdForValidation(session)` → used in `validateAndRedirect` before `performValidation(email, spotsUserId, idToken, ...)`.
+- **Login API body:** `{ email, spots_user_id: spotsUserId || email }`. Backend uses `spots_user_id` for REDCap lookup when provided.
+- **Auth callback (Google):** [app/auth/callback/page.tsx](app/auth/callback/page.tsx) decodes id token for `preferred_username`/`cognito:username` and sends it as `spots_user_id` in the login request.
+- **Sign-up:** [app/_lib/hooks/auth/useSignup.ts](app/_lib/hooks/auth/useSignup.ts) — form username is the REDCap spots_user_id; that becomes the Cognito "User name" (`cognito:username`).
+- **Session/user data:** [app/api/user/route.ts](app/api/user/route.ts) and other consumers use `userData.spots_user_id || userData.email` so the app treats spots_user_id as the primary identifier when present.
+
+## Rules for the AI
+- When touching login, signup, or REDCap validation: preserve sending **both** `email` and `spots_user_id` to the login API; use `getSpotsUserIdForValidation()` (or equivalent) to derive `spots_user_id` from the Cognito session.
+- Sign-up username must remain aligned with REDCap `spots_user_id` (validation, copy, and hooks).
+- Do not assume "username" is always email: for sign-up users it is the custom username (REDCap spots_user_id); for Google it is not set the same way.

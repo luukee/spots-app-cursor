@@ -1,0 +1,35 @@
+---
+description: Helps the AI debug agent see its debugging output. Prefer server-side instrumentation (fetch works) so logs reach the agent; in client code use console.warn because CSP blocks fetch to localhost.
+globs:
+  - "**/middleware.ts"
+  - "app/**/*.tsx"
+  - "app/**/hooks/**/*.ts"
+  - "app/api/**/*.ts"
+alwaysApply: false
+---
+
+# Debug Mode: So the AI Agent Can See Its Output
+
+**Goal:** When the debug agent instruments code, it should see its own logging. Prefer **server-side** instrumentation so the standard `fetch(...)` debug template works and output reaches the agent.
+
+## Server-side: Use fetch (agent sees output)
+
+**Server-side code** (API routes in `app/api/`, middleware, server components) runs in Node.js — no CSP. Use the standard debug `fetch(...)` one-liner; logs reach the NDJSON file and the agent can see them.
+
+## Client-side: Use console.warn (CSP blocks fetch)
+
+This project enforces a strict CSP in `middleware.ts`. `connect-src` allows only `'self'` and production domains (AWS, Cognito, Google, etc.). Any `fetch()` to the debug server (`http://127.0.0.1:*`) from **client code** (React components, hooks, browser JS) is blocked — logs never reach the agent.
+
+Use `console.warn` instead:
+
+```typescript
+// #region agent log
+console.warn('[DEBUG-<sessionId>] <hypothesis>', { key: value });
+// #endregion
+```
+
+Ask the user to filter the browser DevTools console by `DEBUG-<sessionId>` so they can share or inspect client-side debug output. Do not relax CSP in `middleware.ts` just for debug instrumentation.
+
+## Key file
+
+- CSP: `middleware.ts` → `connect-src` directive (around line 92).

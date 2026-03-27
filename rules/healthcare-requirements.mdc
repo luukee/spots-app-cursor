@@ -1,0 +1,53 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Healthcare Application Requirements for SPOTS
+
+## Pediatric Healthcare Context
+SPOTS is designed for children and teens with cancer and their parents. All development must consider:
+- Age-appropriate user interfaces
+- Parent/guardian consent and oversight
+- Healthcare team communication needs
+- Emotional sensitivity in design and messaging
+
+## User Roles and Access
+- **Children/Teens**: Primary users tracking their feelings and symptoms
+- **Parents/Guardians**: Oversight and communication with healthcare team
+- **Healthcare Team**: Access to patient data for treatment decisions
+- **Administrators**: System management and user support
+
+## Data Privacy and Security
+- Follow HIPAA compliance requirements
+- Implement proper data encryption
+- Ensure secure authentication and authorization
+- Maintain audit trails for data access
+- Consider COPPA compliance for users under 13
+
+## User Experience Guidelines
+- Use age-appropriate language and imagery
+- Implement intuitive navigation for different age groups
+- Provide clear feedback and progress indicators
+- Include help and support features
+- Design for accessibility and inclusivity
+
+## Data Tracking Requirements
+- Symptom and feeling tracking over time
+- Treatment schedule and medication adherence
+- Communication logs with healthcare team
+- Progress visualization and reporting
+- Export capabilities for healthcare providers
+
+## Communication Features
+- Secure messaging between families and healthcare team
+- Appointment scheduling and reminders
+- Treatment plan updates and notifications
+- Emergency contact protocols
+
+## Technical Considerations
+- Ensure data backup and recovery procedures
+- Implement proper error handling for medical data
+- Consider offline functionality for critical features
+- Plan for scalability as patient base grows
+- Regular security audits and updates

@@ -1,0 +1,324 @@
+---
+alwaysApply: true
+---
+
+# Developer 3 Focus: Modern Business Logic & Data Integration
+
+## 🎯 Primary Responsibilities
+- **Modern Business Logic Implementation**: PRO-CTCAE compliance, symptom tracking logic, advanced search algorithms
+- **Data Integration**: Connect to Developer 1's backend APIs, manage data flow with modern patterns
+- **State Management**: Complex state for symptoms, cart, search, dashboard using modern React patterns
+- **API Integration**: Frontend services that consume Developer 1's REST APIs with modern error handling
+
+## 🚀 **Modern-First Development Philosophy**
+
+### **Core Principle: Legacy as Reference, Modern as Implementation**
+- **Legacy Codebase**: Use as requirements reference and feature specification
+- **Modern Implementation**: Always implement with current best practices and advanced solutions
+- **Technology Stack**: Use modern TypeScript, React patterns, and advanced algorithms
+- **Performance**: Prioritize modern performance optimization techniques
+
+### **What This Means in Practice**
+- ✅ **Reference Legacy**: Understand requirements from C# codebase
+- ✅ **Implement Modern**: Use advanced algorithms, modern patterns, current best practices
+- ✅ **Exceed Expectations**: Don't just replicate, improve upon legacy functionality
+- ✅ **Future-Proof**: Build with scalability and maintainability in mind
+
+## 📁 File Organization
+- **Modern Business Logic Services**: `lib/services/spots/`, `lib/services/search/`, `lib/services/pro-ctcae/`
+- **Custom Hooks**: `lib/hooks/` for modern React patterns and data management
+- **Business Logic Types**: `lib/types/` with `*-business.ts` naming convention
+- **Feature Components**: `components/features/` with modern React patterns
+
+## 🔧 Modern Business Logic Patterns
+
+### **Service Layer Pattern (Modern)**
+```typescript
+// lib/services/spots/symptom-business.ts
+export class ModernSymptomBusinessService {
+  // Modern async/await patterns
+  async addSymptomToCart(symptom: SymptomBusiness): Promise<void> {
+    // Modern business logic with advanced validation
+  }
+  
+  // Modern validation with comprehensive error handling
+  validatePROCTCAEResponse(response: PROCTCAEResponse): ValidationResult {
+    // Advanced validation logic
+  }
+}
+```
+
+### **Modern Hook Pattern**
+```typescript
+// lib/hooks/useSymptomCart.ts
+export function useSymptomCart() {
+  // Modern React patterns: useState, useCallback, useMemo
+  const [cart, setCart] = useState<SymptomCartBusiness[]>([]);
+  
+  // Modern async handling with proper error boundaries
+  const addToCart = useCallback(async (symptom: SymptomBusiness) => {
+    // Modern business logic with loading states
+  }, []);
+  
+  return { cart, addToCart };
+}
+```
+
+## 🏥 PRO-CTCAE Compliance (Modern Implementation)
+- **Advanced Question Generation**: Dynamic, intelligent question flow
+- **Modern Validation**: Comprehensive validation with detailed error messages
+- **Smart Progression**: AI-like question progression based on responses
+- **Multi-language Support**: Modern i18n patterns
+
+## 🔍 Modern Search Business Logic
+- **Advanced Algorithms**: Multiple similarity algorithms (Levenshtein + Jaro-Winkler + Cosine)
+- **Intelligent Relevance Scoring**: Multi-factor weighted scoring system
+- **Real-time Performance**: Debounced search with intelligent caching
+- **Semantic Search**: Word embeddings and semantic similarity
+- **Modern UX**: Progressive enhancement, loading states, error handling
+
+## 📊 Modern Data Integration Patterns
+- **React Query**: Modern data fetching with caching and synchronization
+- **Optimistic Updates**: Better UX with immediate feedback
+- **Error Boundaries**: Comprehensive error handling and recovery
+- **Modern Caching**: Intelligent cache invalidation and management
+
+## 🚫 What NOT to Focus On
+- **Legacy Replication**: Don't just copy legacy patterns
+- **Outdated Technologies**: Avoid deprecated approaches
+- **Basic Implementations**: Don't settle for simple solutions when advanced ones exist
+- **UI Design**: Visual styling and layout (Developer 2's responsibility)
+- **Backend Infrastructure**: AWS setup, REDCap integration (Developer 1's responsibility)
+
+## ✅ What TO Focus On (Modern Approach)
+- **Advanced Business Rules**: Intelligent symptom validation, modern PRO-CTCAE compliance
+- **Modern Data Flow**: State management with React patterns, advanced API integration
+- **Complex Logic**: Advanced search algorithms, intelligent question generation, modern cart management
+- **Performance**: Modern optimization techniques, intelligent caching, real-time updates
+- **Type Safety**: Comprehensive TypeScript coverage with advanced type patterns
+- **Testing**: Modern testing approaches with comprehensive coverage
+
+## 🔗 Integration Points (Modern)
+- **With Developer 1**: Modern API consumption patterns, advanced error handling
+- **With Developer 2**: Provide modern business logic hooks for UI components
+- **Data Flow**: REDCap → Developer 1 APIs → Modern Business Logic → Developer 2 UI
+
+## 🧪 Modern Testing Focus
+- **Unit Tests**: Modern testing frameworks and patterns
+- **Integration Tests**: Advanced testing with Developer 1's APIs
+- **State Management Testing**: Modern React testing patterns
+- **Performance Testing**: Modern performance validation
+
+## 🚀 **Modern Technology Stack**
+
+### **Core Technologies**
+- **TypeScript**: Advanced type patterns and type safety
+- **React 18+**: Modern React patterns (hooks, suspense, concurrent features)
+- **Modern State Management**: React Query, Zustand, or similar
+- **Advanced Algorithms**: Multiple similarity algorithms, intelligent scoring
+
+### **Performance & UX**
+- **Debounced Search**: Real-time search with intelligent throttling
+- **Intelligent Caching**: Multi-level caching strategies
+- **Progressive Enhancement**: Graceful degradation and enhancement
+- **Modern Error Handling**: Comprehensive error boundaries and recovery
+
+### **Development Experience**
+- **Modern Tooling**: ESLint, Prettier, modern build tools
+- **Type Safety**: Comprehensive TypeScript coverage
+- **Testing**: Modern testing frameworks and patterns
+- **Documentation**: Modern documentation practices
+
+## 📈 **Success Metrics (Modern)**
+
+### **Performance**
+- **Search Response Time**: < 100ms for real-time search
+- **Cache Hit Rate**: > 90% for repeated searches
+- **Bundle Size**: Optimized with modern bundling techniques
+
+### **User Experience**
+- **Search Accuracy**: Advanced algorithms providing better results
+- **Real-time Feedback**: Immediate response with loading states
+- **Error Recovery**: Graceful handling of edge cases
+
+### **Developer Experience**
+- **Type Safety**: 100% TypeScript coverage
+- **Test Coverage**: > 90% for business logic
+- **Code Maintainability**: Modern patterns and comprehensive documentation
+
+## 🎯 **Modern Development Guidelines**
+
+### **Always Use Modern Solutions**
+1. **Research Current Best Practices**: Stay updated with latest patterns
+2. **Implement Advanced Algorithms**: Don't settle for basic solutions
+3. **Prioritize Performance**: Use modern optimization techniques
+4. **Focus on User Experience**: Modern UX patterns and feedback
+5. **Maintain Type Safety**: Comprehensive TypeScript coverage
+
+### **Legacy Codebase as Reference Only**
+1. **Understand Requirements**: Extract feature requirements from legacy
+2. **Modernize Implementation**: Use current best practices
+3. **Exceed Expectations**: Improve upon legacy functionality
+4. **Future-Proof**: Build for scalability and maintainability
+
+This modern-first approach ensures we build a superior application that not only meets but exceeds the legacy requirements while providing a foundation for future growth and enhancement.
+# Developer 3 Focus: Modern Business Logic & Data Integration
+
+## 🎯 Primary Responsibilities
+- **Modern Business Logic Implementation**: PRO-CTCAE compliance, symptom tracking logic, advanced search algorithms
+- **Data Integration**: Connect to Developer 1's backend APIs, manage data flow with modern patterns
+- **State Management**: Complex state for symptoms, cart, search, dashboard using modern React patterns
+- **API Integration**: Frontend services that consume Developer 1's REST APIs with modern error handling
+
+## 🚀 **Modern-First Development Philosophy**
+
+### **Core Principle: Legacy as Reference, Modern as Implementation**
+- **Legacy Codebase**: Use as requirements reference and feature specification
+- **Modern Implementation**: Always implement with current best practices and advanced solutions
+- **Technology Stack**: Use modern TypeScript, React patterns, and advanced algorithms
+- **Performance**: Prioritize modern performance optimization techniques
+
+### **What This Means in Practice**
+- ✅ **Reference Legacy**: Understand requirements from C# codebase
+- ✅ **Implement Modern**: Use advanced algorithms, modern patterns, current best practices
+- ✅ **Exceed Expectations**: Don't just replicate, improve upon legacy functionality
+- ✅ **Future-Proof**: Build with scalability and maintainability in mind
+
+## 📁 File Organization
+- **Modern Business Logic Services**: `lib/services/spots/`, `lib/services/search/`, `lib/services/pro-ctcae/`
+- **Custom Hooks**: `lib/hooks/` for modern React patterns and data management
+- **Business Logic Types**: `lib/types/` with `*-business.ts` naming convention
+- **Feature Components**: `components/features/` with modern React patterns
+
+## 🔧 Modern Business Logic Patterns
+
+### **Service Layer Pattern (Modern)**
+```typescript
+// lib/services/spots/symptom-business.ts
+export class ModernSymptomBusinessService {
+  // Modern async/await patterns
+  async addSymptomToCart(symptom: SymptomBusiness): Promise<void> {
+    // Modern business logic with advanced validation
+  }
+  
+  // Modern validation with comprehensive error handling
+  validatePROCTCAEResponse(response: PROCTCAEResponse): ValidationResult {
+    // Advanced validation logic
+  }
+}
+```
+
+### **Modern Hook Pattern**
+```typescript
+// lib/hooks/useSymptomCart.ts
+export function useSymptomCart() {
+  // Modern React patterns: useState, useCallback, useMemo
+  const [cart, setCart] = useState<SymptomCartBusiness[]>([]);
+  
+  // Modern async handling with proper error boundaries
+  const addToCart = useCallback(async (symptom: SymptomBusiness) => {
+    // Modern business logic with loading states
+  }, []);
+  
+  return { cart, addToCart };
+}
+```
+
+## 🏥 PRO-CTCAE Compliance (Modern Implementation)
+- **Advanced Question Generation**: Dynamic, intelligent question flow
+- **Modern Validation**: Comprehensive validation with detailed error messages
+- **Smart Progression**: AI-like question progression based on responses
+- **Multi-language Support**: Modern i18n patterns
+
+## 🔍 Modern Search Business Logic
+- **Advanced Algorithms**: Multiple similarity algorithms (Levenshtein + Jaro-Winkler + Cosine)
+- **Intelligent Relevance Scoring**: Multi-factor weighted scoring system
+- **Real-time Performance**: Debounced search with intelligent caching
+- **Semantic Search**: Word embeddings and semantic similarity
+- **Modern UX**: Progressive enhancement, loading states, error handling
+
+## 📊 Modern Data Integration Patterns
+- **React Query**: Modern data fetching with caching and synchronization
+- **Optimistic Updates**: Better UX with immediate feedback
+- **Error Boundaries**: Comprehensive error handling and recovery
+- **Modern Caching**: Intelligent cache invalidation and management
+
+## 🚫 What NOT to Focus On
+- **Legacy Replication**: Don't just copy legacy patterns
+- **Outdated Technologies**: Avoid deprecated approaches
+- **Basic Implementations**: Don't settle for simple solutions when advanced ones exist
+- **UI Design**: Visual styling and layout (Developer 2's responsibility)
+- **Backend Infrastructure**: AWS setup, REDCap integration (Developer 1's responsibility)
+
+## ✅ What TO Focus On (Modern Approach)
+- **Advanced Business Rules**: Intelligent symptom validation, modern PRO-CTCAE compliance
+- **Modern Data Flow**: State management with React patterns, advanced API integration
+- **Complex Logic**: Advanced search algorithms, intelligent question generation, modern cart management
+- **Performance**: Modern optimization techniques, intelligent caching, real-time updates
+- **Type Safety**: Comprehensive TypeScript coverage with advanced type patterns
+- **Testing**: Modern testing approaches with comprehensive coverage
+
+## 🔗 Integration Points (Modern)
+- **With Developer 1**: Modern API consumption patterns, advanced error handling
+- **With Developer 2**: Provide modern business logic hooks for UI components
+- **Data Flow**: REDCap → Developer 1 APIs → Modern Business Logic → Developer 2 UI
+
+## 🧪 Modern Testing Focus
+- **Unit Tests**: Modern testing frameworks and patterns
+- **Integration Tests**: Advanced testing with Developer 1's APIs
+- **State Management Testing**: Modern React testing patterns
+- **Performance Testing**: Modern performance validation
+
+## 🚀 **Modern Technology Stack**
+
+### **Core Technologies**
+- **TypeScript**: Advanced type patterns and type safety
+- **React 18+**: Modern React patterns (hooks, suspense, concurrent features)
+- **Modern State Management**: React Query, Zustand, or similar
+- **Advanced Algorithms**: Multiple similarity algorithms, intelligent scoring
+
+### **Performance & UX**
+- **Debounced Search**: Real-time search with intelligent throttling
+- **Intelligent Caching**: Multi-level caching strategies
+- **Progressive Enhancement**: Graceful degradation and enhancement
+- **Modern Error Handling**: Comprehensive error boundaries and recovery
+
+### **Development Experience**
+- **Modern Tooling**: ESLint, Prettier, modern build tools
+- **Type Safety**: Comprehensive TypeScript coverage
+- **Testing**: Modern testing frameworks and patterns
+- **Documentation**: Modern documentation practices
+
+## 📈 **Success Metrics (Modern)**
+
+### **Performance**
+- **Search Response Time**: < 100ms for real-time search
+- **Cache Hit Rate**: > 90% for repeated searches
+- **Bundle Size**: Optimized with modern bundling techniques
+
+### **User Experience**
+- **Search Accuracy**: Advanced algorithms providing better results
+- **Real-time Feedback**: Immediate response with loading states
+- **Error Recovery**: Graceful handling of edge cases
+
+### **Developer Experience**
+- **Type Safety**: 100% TypeScript coverage
+- **Test Coverage**: > 90% for business logic
+- **Code Maintainability**: Modern patterns and comprehensive documentation
+
+## 🎯 **Modern Development Guidelines**
+
+### **Always Use Modern Solutions**
+1. **Research Current Best Practices**: Stay updated with latest patterns
+2. **Implement Advanced Algorithms**: Don't settle for basic solutions
+3. **Prioritize Performance**: Use modern optimization techniques
+4. **Focus on User Experience**: Modern UX patterns and feedback
+5. **Maintain Type Safety**: Comprehensive TypeScript coverage
+
+### **Legacy Codebase as Reference Only**
+1. **Understand Requirements**: Extract feature requirements from legacy
+2. **Modernize Implementation**: Use current best practices
+3. **Exceed Expectations**: Improve upon legacy functionality
+4. **Future-Proof**: Build for scalability and maintainability
+
+This modern-first approach ensures we build a superior application that not only meets but exceeds the legacy requirements while providing a foundation for future growth and enhancement.

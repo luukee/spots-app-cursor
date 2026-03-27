@@ -1,0 +1,12 @@
+---
+description: Understanding the logic from the legacy C# (.NET) codebase.
+alwaysApply: false
+---
+# SPOTS Legacy C+ Overview
+
+## Configuration
+- [SpotSymptoms/](../../SpotSymptoms/)  is the legacy C# (.NET) codebase we will use as a reference to build out Next.js app.
+- If available, `**-logic.md` markdown files explain the logic of a file.
+	- Example: 
+		- C# (.NET) file: ../../SpotSymptoms/Services/Redcap/RedcapService.cs
+		- Related logic markdown file: ../../SpotSymptoms/Services/Redcap/RedcapService-logic.md

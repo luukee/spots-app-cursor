@@ -1,0 +1,291 @@
+# AI Prompts for SPOTS Development
+
+## 🎯 Business Logic Development
+
+### Custom Hook Generation
+
+```
+Create a custom React hook for [specific business logic] that:
+- Follows TypeScript best practices with proper interfaces
+- Integrates with AWS Amplify authentication
+- Handles error states and loading states
+- Includes comprehensive JSDoc documentation
+- Follows the patterns from existing hooks like useSessionTimeout
+- Focuses on business logic rather than UI concerns
+```
+
+### Service Layer Creation
+
+```
+Create a service layer for [specific feature] that:
+- Follows the patterns from existing services in lib/services/
+- Includes proper TypeScript interfaces for all data structures
+- Handles AWS Amplify integration appropriately
+- Includes error handling and validation
+- Provides methods for CRUD operations
+- Follows healthcare compliance requirements
+```
+
+### API Integration
+
+```
+Create an API integration for [specific endpoint] that:
+- Follows the patterns from existing API integrations
+- Includes proper TypeScript interfaces
+- Handles authentication with AWS Cognito
+- Includes error handling and retry logic
+- Validates input data
+- Follows HIPAA compliance requirements
+```
+
+## 🔧 Component Development
+
+### Business Logic Component
+
+```
+Create a React component for [specific business logic] that:
+- Uses TypeScript with proper interfaces
+- Follows Next.js App Router patterns
+- Integrates with existing business logic services
+- Handles loading and error states
+- Is accessible for pediatric users
+- Focuses on business logic rather than styling
+```
+
+### Form Component
+
+```
+Create a form component for [specific data collection] that:
+- Uses TypeScript with proper validation
+- Integrates with AWS Amplify authentication
+- Follows healthcare compliance requirements
+- Includes proper error handling
+- Is accessible for pediatric users and caregivers
+- Validates input according to business rules
+```
+
+## 🧪 Testing & Quality
+
+### Test Generation
+
+```
+Create comprehensive tests for [specific component/function] that:
+- Tests both happy path and edge cases
+- Mocks AWS Amplify services appropriately
+- Tests accessibility requirements
+- Validates business logic rules
+- Follows the testing patterns from existing tests
+- Includes proper TypeScript typing
+```
+
+### Code Review Request
+
+```
+Please review this code for:
+- TypeScript best practices and type safety
+- Business logic correctness and edge cases
+- Security and HIPAA compliance concerns
+- Performance optimizations
+- Accessibility improvements
+- Integration with existing patterns
+- Hardcoded values that should use localization
+```
+
+## 🌐 Localization & Avoiding Hardcoded Values
+
+### **CRITICAL: Never Hardcode Text Values**
+
+When generating code, **ALWAYS** use localization instead of hardcoded strings. All user-facing text, labels, messages, and UI strings must come from the localization system.
+
+#### What to Avoid ❌
+
+```typescript
+// ❌ BAD - Hardcoded strings
+<button>Submit</button>
+<p>Please enter your name</p>
+<div>Error: Invalid input</div>
+const title = "Dashboard";
+const message = "Welcome back!";
+```
+
+#### What to Use Instead ✅
+
+```typescript
+// ✅ GOOD - Using localization hook
+import { useLocalization } from '@/app/_lib/hooks/loc/useLocalization';
+
+function MyComponent() {
+  const { t } = useLocalization();
+  
+  return (
+    <button>{t('common.submit')}</button>
+    <p>{t('forms.enterName')}</p>
+    <div>{t('errors.invalidInput')}</div>
+  );
+}
+
+// For static/programmatic contexts
+const title = useLocalization().t('pages.dashboard');
+```
+
+#### Key Rules for AI Code Generation
+
+1. **Never hardcode user-facing text**: All strings displayed to users must use `t()` from the localization hook
+2. **Use appropriate localization keys**: Follow existing key patterns (e.g., `common.submit`, `forms.fieldName`, `pages.pageName`, `errors.errorType`)
+3. **Check existing localization files**: Before creating new keys, check if a key already exists in `app/_lib/services/localization/`
+4. **For new keys**: Use descriptive, hierarchical key names that clearly indicate context and purpose
+5. **Error messages**: Always use localization for error messages, validation messages, and user feedback
+6. **Button labels**: Never hardcode button text - use localization keys
+7. **Placeholder text**: Use localization for input placeholders
+8. **Accessibility text**: Use localization for aria-labels, alt text, and other accessibility attributes
+
+#### When Generating Code
+
+- Before writing any text string, ask: "Is this displayed to the user?"
+- If yes → Use localization (`t('key.path')`)
+- If no (e.g., internal variable names, API endpoints) → OK to use strings, but prefer constants/enums for business rules
+
+#### Reference Existing Patterns
+
+- Check `app/_components/auth/` for authentication UI localization examples
+- Check `app/_components/layout/` for header/footer localization patterns
+- Review `app/_lib/services/localization/` for existing key structures
+- See `docs/development/hardcoded-strings-audit.md` for examples of what to avoid
+
+## 🚀 Performance & Optimization
+
+### Performance Analysis
+
+```
+Analyze this code for performance issues:
+- React rendering optimizations
+- Memory leaks and cleanup
+- Bundle size impact
+- API call efficiency
+- State management optimization
+- Suggest specific improvements
+```
+
+### Refactoring Request
+
+```
+Refactor this code to:
+- Reduce code duplication
+- Improve type safety
+- Follow established patterns
+- Enhance maintainability
+- Optimize performance
+- Improve accessibility
+```
+
+## 📚 Documentation
+
+### API Documentation
+
+```
+Generate comprehensive documentation for [specific API/component] that:
+- Includes TypeScript interfaces
+- Provides usage examples
+- Documents error cases
+- Explains business logic rules
+- Follows JSDoc standards
+- Includes integration examples
+```
+
+### README Updates
+
+```
+Update the README to include:
+- New feature documentation
+- Updated setup instructions
+- API documentation links
+- Development workflow updates
+- Testing instructions
+- Deployment information
+```
+
+## 🔍 Debugging & Troubleshooting
+
+### Error Analysis
+
+```
+Analyze this error and provide:
+- Root cause identification
+- Suggested fixes
+- Prevention strategies
+- Related code that might be affected
+- Testing recommendations
+- Documentation updates needed
+```
+
+### Performance Debugging
+
+```
+Help debug this performance issue:
+- Identify bottlenecks
+- Suggest profiling approaches
+- Recommend optimizations
+- Check for memory leaks
+- Analyze bundle size impact
+- Suggest monitoring strategies
+```
+
+## 🎨 Code Generation Templates
+
+### Component Template
+
+```typescript
+// Template for business logic components
+interface ComponentProps {
+	// Define props with proper typing
+}
+
+export function ComponentName({ ...props }: ComponentProps) {
+	// Business logic implementation
+	// AWS Amplify integration
+	// Error handling
+	// Accessibility considerations
+}
+```
+
+### Hook Template
+
+```typescript
+// Template for custom hooks
+interface UseHookConfig {
+	// Configuration options
+}
+
+interface UseHookReturn {
+	// Return values
+}
+
+export function useHookName(config: UseHookConfig = {}): UseHookReturn {
+	// Hook implementation
+	// State management
+	// Side effects
+	// Error handling
+}
+```
+
+### Service Template
+
+```typescript
+// Template for service layers
+interface ServiceConfig {
+	// Service configuration
+}
+
+export class ServiceName {
+	constructor(private config: ServiceConfig) {}
+
+	// Service methods
+	// Error handling
+	// Validation
+	// AWS integration
+}
+```
+
+description: globs: alwaysApply: false
+
+---

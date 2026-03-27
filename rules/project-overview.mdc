@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SPOTS App Project Overview
+
+## Project Purpose
+SPOTS (Supporting Pediatric Oncology Treatment Success) is a Next.js web application designed to help children and teens with cancer and their parents track how the child/teen is feeling throughout their cancer treatments and communicate that information to their health care team.
+
+## Tech Stack
+- **Frontend**: Next.js 15, React 18, TypeScript, Tailwind CSS
+- **Backend**: AWS Amplify Gen2 with Cognito, AppSync, DynamoDB
+- **Authentication**: AWS Cognito with Google OAuth
+- **Database**: Amazon DynamoDB
+- **Deployment**: AWS Amplify
+
+## Key Files and Directories
+
+### Core Application Files
+- [app/layout.tsx](mdc:spots-app/app/layout.tsx) - Root layout with metadata and global styles
+- [app/page.tsx](mdc:spots-app/app/page.tsx) - Main landing page
+- [app/globals.css](mdc:spots-app/app/globals.css) - Global CSS styles
+- [app/app.css](mdc:spots-app/app/app.css) - Application-specific styles
+
+### Authentication & User Management
+- [app/login/page.tsx](mdc:spots-app/app/login/page.tsx) - Login page
+- [app/dashboard/page.tsx](mdc:spots-app/app/dashboard/page.tsx) - User dashboard
+- [amplify/auth/resource.ts](mdc:spots-app/amplify/auth/resource.ts) - Auth configuration with Google OAuth
+
+### Backend Configuration
+- [amplify/backend.ts](mdc:spots-app/amplify/backend.ts) - Main backend configuration
+- [amplify/data/resource.ts](mdc:spots-app/amplify/data/resource.ts) - Database schema and models
+- [package.json](mdc:spots-app/package.json) - Project dependencies and scripts
+
+### Configuration Files
+- [tsconfig.json](mdc:spots-app/tsconfig.json) - TypeScript configuration with path aliases
+- [next.config.js](mdc:spots-app/next.config.js) - Next.js configuration
+- [amplify.yml](mdc:spots-app/amplify.yml) - Amplify build settings
+
+## Development Guidelines (Developer 3 Focus)
+- Use TypeScript for all new code with strict typing
+- Focus on business logic and data integration
+- Implement proper error handling and loading states for data operations
+- Create React hooks and services for data management
+- Follow AWS Amplify Gen2 patterns for backend integration
+- Maintain HIPAA compliance for healthcare data handling
+- When you suggest code changes or creating new files please print out the code in the chat so I can look over it and apply it manually. Do not automatically apply changes or create files unless I ask you to.
+- Write code that tells the story — it should be clear and self-explanatory, making the logic obvious without needing separate documentation.
+- Prioritize business logic

@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+
+Rule outlining different app features so it is easy for the agent to reference this rule for context.
+
+## Problem Station – Delete symptom
+
+- **User-facing:** Users can remove a symptom from Problem Station. The app soft-deletes (sets `symptom_deleted = 1` in REDCap); the record is not removed.
+- **Frontend:** `SymptomsSummary` sends `PATCH /api/symptoms/delete?repeat_id=<symptom_report_id>`. For child users, request body includes `{ family_id }` so the backend uses the parent’s REDCap account. Session state is updated after success; `symptom-deleted` and `problem-station-changed` events keep the header badge and list in sync.
+- **API route:** `app/api/symptoms/delete/route.ts` forwards the PATCH to the backend with query and body unchanged.
+- **Backend:** Lambda `/symptoms/delete` reads `repeat_id` and optional body `family_id`. When `family_id` is present, it resolves the parent’s `spots_user_id` and uses that for the REDCap delete. `redcap_client.delete_symptom(account_id, repeat_id)` finds the symptom’s `individual_id` and repeat instance, then overwrites the record with `symptom_deleted = 1`. Other APIs filter on `symptom_deleted = 0` so deleted symptoms disappear from lists.
+- **Docs:** See [docs/features/problem-station/delete-symptom.md](docs/features/problem-station/delete-symptom.md) for a layman’s description and full frontend-to-backend flow.

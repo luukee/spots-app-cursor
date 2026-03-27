@@ -1,0 +1,49 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Next.js App Router Patterns for SPOTS
+
+## File Structure Conventions
+- Use the App Router structure with `app/` directory
+- Each route is a directory with `page.tsx` file
+- Use `layout.tsx` for shared layouts
+- Place components in `app/components/` or co-locate with pages
+
+## Component Patterns
+
+### Page Components
+- Use Server Components by default
+- Add `"use client"` directive only when needed for interactivity
+- Export default function with descriptive names
+- Use TypeScript interfaces for props
+
+### Layout Components
+- Reference [app/layout.tsx](mdc:spots-app/app/layout.tsx) for root layout pattern
+- Include metadata exports for SEO
+- Use Inter font from Google Fonts
+- Apply global styles from [app/globals.css](mdc:spots-app/app/globals.css)
+
+### Authentication Pages
+- Reference [app/login/page.tsx](mdc:spots-app/app/login/page.tsx) for login pattern
+- Reference [app/dashboard/page.tsx](mdc:spots-app/app/dashboard/page.tsx) for protected pages
+- Use AWS Amplify UI components for auth flows
+
+## Styling Guidelines
+- Use Tailwind CSS classes
+- Reference [app/app.css](mdc:spots-app/app/app.css) for custom styles
+- Use CSS modules for component-specific styles when needed
+- Follow responsive design principles for mobile-first approach
+
+## Data Fetching
+- Use Server Components for initial data fetching
+- Implement loading.tsx for loading states
+- Use error.tsx for error boundaries
+- Follow Next.js 15 patterns for data fetching
+
+## TypeScript Configuration
+- Use path aliases defined in [tsconfig.json](mdc:spots-app/tsconfig.json)
+- Import types from `@/` alias
+- Use strict TypeScript settings
+- Define proper interfaces for all data structures

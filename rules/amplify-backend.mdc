@@ -1,0 +1,67 @@
+---
+description: Use when working on AWS Amplify Gen2 backend (amplify/ config, Auth, Data schema), Cognito/REDCap identity and login flow, or frontend code that uses Amplify Data/Auth.
+globs:
+  - "amplify/**"
+  - "app/_lib/services/auth/**"
+alwaysApply: false
+---
+# AWS Amplify Gen2 Backend Patterns for SPOTS
+
+## Backend Architecture
+- Use AWS Amplify Gen2 for backend infrastructure
+- Configure auth, data, and API resources in [amplify/](mdc:spots-app/amplify) directory
+- Main configuration in [amplify/backend.ts](mdc:spots-app/amplify/backend.ts)
+
+## Authentication Configuration
+- Reference [amplify/auth/resource.ts](mdc:spots-app/amplify/auth/resource.ts) for auth setup
+- Uses AWS Cognito with Google OAuth integration
+- Supports email/password and Google sign-in
+- Includes MFA support (optional TOTP)
+- Configured callback URLs for localhost and production
+
+## Cognito Username & REDCap Identity (Migration)
+- **Sign-up users:** Username at sign-up must match REDCap `spots_user_id`; stored as Cognito `preferred_username` when allowed. REDCap lookup uses `getSpotsUserIdForValidation(session)` → `spots_user_id` in login API body.
+- **Google users:** REDCap lookup uses email; login API still sends `spots_user_id` when available (from id token `preferred_username`), else email.
+- **Login flow:** Always send `{ email, spots_user_id }` to `POST /api/auth/login`. See [app/_lib/services/auth/login-service.ts](app/_lib/services/auth/login-service.ts) (`getSpotsUserIdForValidation`, `performValidation`).
+
+## Data Models
+- Reference [amplify/data/resource.ts](mdc:spots-app/amplify/data/resource.ts) for schema definition
+- Uses Amplify Data for GraphQL API with DynamoDB
+- Current models:
+  - `User`: Extended user profile with role, name, timestamps
+  - `Todo`: Example model (can be removed or repurposed)
+
+### User Model Schema
+```typescript
+User: {
+  email: string (required, unique identifier)
+  role: string (default: 'user')
+  givenName: string (optional)
+  familyName: string (optional)
+  createdAt: datetime
+  updatedAt: datetime
+}
+```
+
+## Authorization Patterns
+- Owner-based authorization for user data
+- Users can read, create, and update their own data
+- Default authorization mode: "userPool"
+- Extensible for admin roles and healthcare team access
+
+## Frontend Integration
+- Generate Data client using `generateClient<Schema>()`
+- Use in client components with "use client" directive
+- Example usage patterns in [amplify/data/resource.ts](mdc:spots-app/amplify/data/resource.ts) comments
+
+## Development Workflow
+- Use `amplify sandbox` for local development
+- Deploy with `amplify push` for production
+- Configure environment variables for OAuth secrets
+- Test auth flows locally before deployment
+
+## Security Considerations
+- All user data is owner-protected
+- OAuth secrets stored as Amplify secrets
+- MFA available for enhanced security
+- Follow healthcare data privacy requirements (HIPAA considerations)
