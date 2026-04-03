@@ -38,7 +38,7 @@ SPOTS (Supporting Pediatric Oncology Treatment Success) is a Next.js web applica
 - [next.config.js](mdc:spots-app/next.config.js) - Next.js configuration
 - [amplify.yml](mdc:spots-app/amplify.yml) - Amplify build settings
 
-## Development Guidelines (Developer 3 Focus)
+## Development Guidelines
 - Use TypeScript for all new code with strict typing
 - Focus on business logic and data integration
 - Implement proper error handling and loading states for data operations

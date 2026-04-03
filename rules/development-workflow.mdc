@@ -1,10 +1,7 @@
 ---
 description: Development workflow rules and best practices for the SPOTS project using Next.js, React, AWS Amplify, AWS Cognito, API Gateway and Tailwind CSS.
-globs:
-  - "**/*.{js,jsx,ts,tsx}"
 alwaysApply: true
 ---
-
 # SPOTS Development Workflow & Best Practices
 
 ## 🔧 Project Setup
@@ -14,7 +11,7 @@ alwaysApply: true
 - Use `npm run build` for production builds
 - Prefer using **ESLint and Prettier** for code formatting and linting
 
-## 🧠 Coding Fundamentals (Developer 3 Focus)
+## 🧠 Coding Fundamentals
 - Use **TypeScript** exclusively for new files with strict typing
 - Follow **Next.js App Router** conventions:
   - Use `app/` directory
@@ -29,15 +26,14 @@ alwaysApply: true
   - Implement service layers for API integration
   - Build state management for complex data relationships
 
-## ✨ DRY & Clean Code Principles (Developer 3 Focus)
+## ✨ DRY & Clean Code Principles
 - Abstract repeated business logic into utilities or hooks (e.g., `useSymptomCart()`, `useSearchBusiness()`)
 - Prefer composition over duplication for business logic
 - Avoid magic strings/numbers—use constants/enums for business rules
 - Reuse business logic services where possible; centralize data validation and transformation
 - Create reusable business logic patterns for PRO-CTCAE compliance
 
-## 🎨 Styling Guidelines (Developer 3 Focus)
-- **Note**: UI styling is primarily handled by Developer 2
+## 🎨 Styling Guidelines
 - Use **Tailwind CSS** for minimal styling when creating business logic components
   - Extend it via `tailwind.config.js` if needed
 - Prefer utility classes over custom CSS unless necessary
