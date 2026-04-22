@@ -1,6 +1,0 @@
-{"sessionId":"814d01","location":"delete/route.ts","message":"before Lambda fetch","data":{"repeatId":"439_1","bodyKeys":["family_id"],"bodyLen":23},"timestamp":1773695982259,"hypothesisId":"A"}
-{"sessionId":"814d01","location":"delete/route.ts","message":"Lambda response","data":{"status":200,"ok":true},"timestamp":1773695984043,"hypothesisId":"B,C"}
-{"sessionId":"814d01","location":"delete/route.ts","message":"before Lambda fetch","data":{"repeatId":"44_2","bodyKeys":["family_id"],"bodyLen":23},"timestamp":1773696066879,"hypothesisId":"A"}
-{"sessionId":"814d01","location":"delete/route.ts","message":"Lambda response","data":{"status":200,"ok":true},"timestamp":1773696068492,"hypothesisId":"B,C"}
-{"sessionId":"814d01","location":"delete/route.ts","message":"before Lambda fetch","data":{"repeatId":"150_3","bodyKeys":[],"bodyLen":2},"timestamp":1773696118141,"hypothesisId":"A"}
-{"sessionId":"814d01","location":"delete/route.ts","message":"Lambda response","data":{"status":200,"ok":true},"timestamp":1773696120363,"hypothesisId":"B,C"}
