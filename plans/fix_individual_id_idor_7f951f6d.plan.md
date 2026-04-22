@@ -4,22 +4,22 @@ overview: Close the IDOR class of vulnerabilities by enforcing a server-side all
 todos:
   - id: backend-allowlist
     content: Add require_individual_in_family (or equivalent) in SPOTS_backend/redcap_client.py; tighten _resolve_individual_id
-    status: in_progress
+    status: completed
   - id: backend-callers
     content: Wire validation into get_symptom_responses, get_reports_summary_data, get_reports_generate_data (for_child+id), create_symptom_record, post_tracking
-    status: pending
+    status: completed
   - id: lambda-errors
     content: Adjust LambdaRedcap.py /reports/generate (and any edge paths) to return 403/400 on validation failure consistently
-    status: pending
+    status: completed
   - id: bff-allowlist
     content: Add spots-app server allowlist helper + 403 in API routes that forward individual_id / analytics body
-    status: pending
+    status: completed
   - id: child-id-post
     content: Fix family_id POST guard in spots-app/app/api/family/child-id/route.ts when user.family_id is missing
-    status: pending
+    status: completed
   - id: verify-tests
     content: Manual curl regression + minimal automated tests for allowlist helper / critical paths
-    status: pending
+    status: completed
 isProject: false
 ---
 
