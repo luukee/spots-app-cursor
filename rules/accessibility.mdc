@@ -1,0 +1,76 @@
+---
+description: Require fully accessible, screen-reader-compatible UI in all SPOTS code the agent writes or changes. WCAG 2.1 AA target; reuse project a11y utilities and tests.
+alwaysApply: true
+---
+
+# Accessibility & Screen Reader Compatibility (SPOTS)
+
+All UI code the agent writes or modifies must be **fully accessible** and **screen reader compatible**. SPOTS serves children, teens, and caregivers in a healthcare context — inaccessible UI blocks real users from reporting symptoms and using critical flows.
+
+**Target:** WCAG 2.1 Level AA (project baseline; see `app/_lib/testing/a11y.ts` and `.github/workflows/a11y.yml`).
+
+## Non-negotiables
+
+- **Semantic HTML first** — use native elements (`button`, `a`, `input`, `label`, `nav`, `main`, `header`, `footer`) before ARIA or custom widgets.
+- **Keyboard complete** — every interactive control reachable and operable via keyboard; visible focus; logical tab order; no keyboard traps (except intentional modals with escape/close).
+- **Screen reader meaningful** — every control has an accessible name; state changes are announced; decorative content is hidden from AT.
+- **Do not ship color-only affordances** — pair with text or another non-color cue. Icon-only controls are OK when they have a clear `aria-label` (or visible text elsewhere).
+- **Respect `prefers-reduced-motion`** when adding animation (see existing patterns in the codebase).
+
+## Semantic structure
+
+- One `<h1>` per page/view; logical heading hierarchy (`h2` → `h3`, no skips).
+- Main landmark: `#main-content` (see `app/_lib/utils/focus-a11y.ts`); skip link pattern in layout tests.
+- Use lists, landmarks, and articles where content is grouped — avoid div-only layouts for navigable regions.
+
+## Labels, names, and ARIA
+
+- **Every** `input`, `select`, `textarea`, and custom control has a visible `<label>` or `aria-label` / `aria-labelledby`.
+- **Images:** meaningful `alt`; decorative images `alt=""` and/or `aria-hidden="true"`.
+- **Icon-only buttons:** `aria-label` (e.g. close, delete, scroll).
+- **Toggle/selection:** use `aria-pressed`, `aria-checked`, or `role="radiogroup"` + `aria-checked` as appropriate — follow `SelectableCard`, `HairStyleSelector`, `ProblemStationStyleRow`.
+- **Dialogs/overlays:** `role="dialog"`, `aria-modal="true"`, labelled (`aria-label` or `aria-labelledby`); trap focus inside; restore focus on close; background `inert` via `setMobileOverlayBackgroundInert` / overlay helpers in `app/_lib/utils/focus-a11y.ts`.
+- **Live regions:** loading, errors, and view changes use `aria-live` (`polite` or `assertive`) — see `useViewTitleAnnouncement`, skeleton `aria-busy` patterns.
+- **Prefer visible text over redundant ARIA** — avoid duplicating labels in `aria-label` when visible text already names the control (see `useHeaderController` comment on `aria-describedby`).
+
+## Keyboard & focus
+
+- Reuse `app/_lib/hooks/a11y/useRadioGroupKeyboard.ts` for roving tabindex / arrow-key groups.
+- On route or view enter, use `useFocusOnViewEnter` / `focusElementForAssistiveTech` (Safari/VoiceOver-safe).
+- Modals/menus: focus first focusable on open; return focus to trigger on close (`getOverlayFirstFocusable`).
+- Do not remove focus outlines without an equally visible replacement (`focus-visible` utilities).
+
+## Forms & dynamic content
+
+- Associate validation/errors with fields (`aria-invalid`, `aria-describedby` pointing at error text).
+- Announce async results (save success/failure, empty states) without relying on color alone.
+- Loading states: `aria-busy="true"` where content is replacing, not merely decorative skeletons.
+
+## SPOTS-specific
+
+- **Pediatric copy** in accessible names must stay age-appropriate (align with `healthcare-requirements.mdc`).
+- **Symptom flows** (cart, PRO-CTCAE questions, body map, Problem Station): selected state, progress, and destructive actions (delete) must be named and keyboard-operable.
+- **Parent/child contexts:** do not expose PHI in `aria-label` beyond what is already visible and appropriate for the role.
+
+## When writing or changing components
+
+1. Match patterns in existing a11y-tested components under `app/_components/**/__tests__/*.a11y.test.tsx`.
+2. For new or changed UI, add or update an a11y test using `expectNoA11yViolations` from `app/_lib/testing/a11y.ts`.
+3. Run / respect `eslint-plugin-jsx-a11y` — do not disable a11y rules without team approval.
+4. Flag gaps the agent cannot fully verify (e.g. color contrast in JSDOM, complex gestures) and note manual VoiceOver/NVDA checks for reviewers.
+
+## Anti-patterns (reject in solutions)
+
+- `<div onClick>` without `role`, keyboard handler, and accessible name
+- `tabIndex={0}` on non-interactive elements to fake buttons
+- `aria-hidden="true"` on focusable or essential content
+- Placeholder-only labels with no accessible name
+- Auto-playing media without user control
+- Removing "Skip to main" or main landmark id
+
+## References
+
+- Utilities: `app/_lib/utils/focus-a11y.ts`, `app/_lib/hooks/a11y/`
+- Tests: `app/_lib/testing/a11y.ts`, `e2e/a11y-*.spec.ts`, `e2e/fixtures/a11y.ts`
+- CI: `.github/workflows/a11y.yml`
+- Plan/history: `docs/todo/todo-accessibility.md`

@@ -1,11 +1,6 @@
 ---
-description: Helps the AI debug agent see its debugging output. Prefer server-side instrumentation (fetch works) so logs reach the agent; in client code use console.warn because CSP blocks fetch to localhost.
-globs:
-  - "**/middleware.ts"
-  - "app/**/*.tsx"
-  - "app/**/hooks/**/*.ts"
-  - "app/api/**/*.ts"
-alwaysApply: false
+description: 
+alwaysApply: true
 ---
 
 # Debug Mode: So the AI Agent Can See Its Output
