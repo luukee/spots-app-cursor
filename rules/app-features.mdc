@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+description: Feature reference for Problem Station symptom soft-delete (frontend API route, family_id, REDCap symptom_deleted). Use when changing delete-symptom or Problem Station flows.
+alwaysApply: false
 ---
 
 Rule outlining different app features so it is easy for the agent to reference this rule for context.

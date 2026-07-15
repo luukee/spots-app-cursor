@@ -1,53 +1,27 @@
 ---
-description: 
-globs: 
+description: Pediatric healthcare context for SPOTS — age-appropriate UX, parent/child roles, HIPAA/COPPA-minded privacy. Always applied.
 alwaysApply: true
 ---
-# Healthcare Application Requirements for SPOTS
 
-## Pediatric Healthcare Context
-SPOTS is designed for children and teens with cancer and their parents. All development must consider:
-- Age-appropriate user interfaces
-- Parent/guardian consent and oversight
-- Healthcare team communication needs
-- Emotional sensitivity in design and messaging
+# Healthcare requirements (SPOTS)
 
-## User Roles and Access
-- **Children/Teens**: Primary users tracking their feelings and symptoms
-- **Parents/Guardians**: Oversight and communication with healthcare team
-- **Healthcare Team**: Access to patient data for treatment decisions
-- **Administrators**: System management and user support
+SPOTS is for children and teens with cancer and their caregivers. Code and copy must respect that context.
 
-## Data Privacy and Security
-- Follow HIPAA compliance requirements
-- Implement proper data encryption
-- Ensure secure authentication and authorization
-- Maintain audit trails for data access
-- Consider COPPA compliance for users under 13
+## Users & roles
+- **Children/teens** — primary users reporting feelings and symptoms
+- **Parents/guardians** — oversight; may act in a child context (`family_id` / reporting-as flows)
+- **Healthcare team / admins** — clinical or system access; least privilege
 
-## User Experience Guidelines
-- Use age-appropriate language and imagery
-- Implement intuitive navigation for different age groups
-- Provide clear feedback and progress indicators
-- Include help and support features
-- Design for accessibility and inclusivity
+## Privacy & compliance mindset
+- Treat data as sensitive (HIPAA-like): no secrets in git, no unnecessary PHI in logs, UI copy, or `aria-label`s
+- Consider COPPA for users under 13 (parental oversight, careful data collection)
+- Secure auth and authorization; fail closed when identity or family context is unclear
 
-## Data Tracking Requirements
-- Symptom and feeling tracking over time
-- Treatment schedule and medication adherence
-- Communication logs with healthcare team
-- Progress visualization and reporting
-- Export capabilities for healthcare providers
+## Product UX constraints
+- Age-appropriate language and imagery; emotionally sensitive messaging
+- Clear feedback for save/error/empty states (not color-only)
+- Parent vs child context must stay obvious and safe in the UI
 
-## Communication Features
-- Secure messaging between families and healthcare team
-- Appointment scheduling and reminders
-- Treatment plan updates and notifications
-- Emergency contact protocols
-
-## Technical Considerations
-- Ensure data backup and recovery procedures
-- Implement proper error handling for medical data
-- Consider offline functionality for critical features
-- Plan for scalability as patient base grows
-- Regular security audits and updates
+## Built product focus (today)
+- Symptom / feeling tracking and reporting to the care team via REDCap-backed APIs
+- Do not invent fallbacks or fake clinical data when REDCap/APIs fail

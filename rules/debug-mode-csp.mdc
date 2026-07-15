@@ -1,6 +1,6 @@
 ---
-description: 
-alwaysApply: true
+description: How to instrument debug logging under SPOTS CSP — server fetch vs client console.warn. Use when debugging with agent logs or changing middleware CSP.
+alwaysApply: false
 ---
 
 # Debug Mode: So the AI Agent Can See Its Output

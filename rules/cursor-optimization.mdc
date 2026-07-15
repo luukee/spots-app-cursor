@@ -1,7 +1,6 @@
 ---
-description: Comprehensive guidelines for optimizing Cursor AI editor usage in the SPOTS healthcare application, covering AI assistant best practices, code generation patterns, healthcare compliance considerations, and project-specific development workflows.
-globs: 
-alwaysApply: true
+description: Guidelines for optimizing Cursor AI usage in SPOTS — code generation patterns, healthcare compliance prompts, and editor workflows. Use when tuning agent behavior or Cursor setup.
+alwaysApply: false
 ---
 
 # Cursor Editor Optimization for SPOTS

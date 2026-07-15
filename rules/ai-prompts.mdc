@@ -1,3 +1,7 @@
+---
+description: Copy-paste prompt templates for scaffolding SPOTS hooks, services, components, tests, and refactors. Use only when the user asks for a prompt, template, or how to phrase a request to the agent.
+alwaysApply: false
+---
 # AI Prompts for SPOTS Development
 
 ## 🎯 Business Logic Development

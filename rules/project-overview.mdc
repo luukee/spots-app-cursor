@@ -1,7 +1,6 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description: SPOTS app purpose, tech stack, and key file map (layout, auth, Amplify). Use when orienting to the project or locating core entry points.
+alwaysApply: false
 ---
 # SPOTS App Project Overview
 
@@ -44,7 +43,6 @@ SPOTS (Supporting Pediatric Oncology Treatment Success) is a Next.js web applica
 - Implement proper error handling and loading states for data operations
 - Create React hooks and services for data management
 - Follow AWS Amplify Gen2 patterns for backend integration
-- Maintain HIPAA compliance for healthcare data handling
-- When you suggest code changes or creating new files please print out the code in the chat so I can look over it and apply it manually. Do not automatically apply changes or create files unless I ask you to.
-- Write code that tells the story — it should be clear and self-explanatory, making the logic obvious without needing separate documentation.
-- Prioritize business logic
+- Maintain HIPAA-minded handling of healthcare data
+- Write code that tells the story — clear enough that the logic is obvious without separate docs
+- Prioritize business logic; ask before applying edits when the user hasn’t approved file changes

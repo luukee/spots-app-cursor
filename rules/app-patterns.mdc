@@ -1,0 +1,43 @@
+---
+description: Next.js App Router and TypeScript patterns for SPOTS app code — pages/layouts, server vs client, styling, data fetching, and typing conventions.
+globs: app/**/*.{ts,tsx}
+alwaysApply: false
+---
+
+# App Code Patterns (Next.js + TypeScript)
+
+## File Structure
+- Use the App Router with `app/`; each route is a directory with `page.tsx`
+- Use `layout.tsx` for shared layouts
+- Place components in `app/_components/` (or co-locate with pages)
+
+## Page & Layout Components
+- Server Components by default; add `"use client"` only for interactivity or browser APIs
+- Export default functions with descriptive names; type props with interfaces
+- Root layout: see [app/layout.tsx](mdc:spots-app/app/layout.tsx) — metadata, fonts, [app/globals.css](mdc:spots-app/app/globals.css)
+- Auth / protected pages: see login and dashboard page patterns; Amplify UI where appropriate for auth flows
+
+## Styling
+- Prefer Tailwind utility classes; [app/app.css](mdc:spots-app/app/app.css) for app-specific styles
+- CSS modules only when needed; mobile-first responsive layout
+
+## Data Fetching
+- Fetch in Server Components when possible
+- Use `loading.tsx` / `error.tsx` for route loading and error boundaries
+- Follow Next.js 15 App Router data-fetching patterns
+
+## TypeScript Configuration
+- Strict mode via [tsconfig.json](mdc:spots-app/tsconfig.json); import with `@/` path alias
+- Define interfaces/types for props, API payloads, and domain models — prefer `unknown` over `any`
+
+## Business Logic Types
+- Prefer `*-business.ts` naming for domain types under `app/_lib/types/` (or equivalent)
+- Export reusable types for services and hooks
+- Type PRO-CTCAE / symptom structures strictly where they exist
+- Amplify: import schema types from [amplify/data/resource.ts](mdc:spots-app/amplify/data/resource.ts); use typed Data client `generateClient<Schema>()` when touching Amplify Data
+- Type auth user fields and all REST request/response shapes for backend/REDCap APIs
+
+## Hooks, State & Errors
+- Type custom hook args, return values, and event handlers
+- Type business state (symptoms, cart, search) explicitly
+- Prefer typed errors / error boundaries for async and UI failure paths

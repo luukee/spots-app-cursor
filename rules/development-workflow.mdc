@@ -1,94 +1,15 @@
 ---
-description: Development workflow rules and best practices for the SPOTS project using Next.js, React, AWS Amplify, AWS Cognito, API Gateway and Tailwind CSS.
+description: SPOTS development invariants — toolchain, TypeScript style, REDCap no-fallbacks, and security basics. Always applied.
 alwaysApply: true
 ---
-# SPOTS Development Workflow & Best Practices
 
-## 🔧 Project Setup
-- Ensure you are using the Node.js version specified in [.nvmrc](mdc:spots-app/.nvmrc)
-- Install dependencies with `npm install`
-- Start the local dev server with `npm run dev`
-- Use `npm run build` for production builds
-- Prefer using **ESLint and Prettier** for code formatting and linting
+# SPOTS development invariants
 
-## 🧠 Coding Fundamentals
-- Use **TypeScript** exclusively for new files with strict typing
-- Follow **Next.js App Router** conventions:
-  - Use `app/` directory
-  - Use `server` and `client` components appropriately
-  - Prefer `useRouter()` and `useSearchParams()` over legacy methods
-- Follow **React 18+ best practices**:
-  - Use `useEffect`, `useMemo`, and `useCallback` wisely
-  - Avoid prop drilling by using context or composition
-  - Prefer functional components and hooks
-- **Focus on Business Logic**:
-  - Create custom hooks for data management (`useSymptomCart`, `useSearchResults`)
-  - Implement service layers for API integration
-  - Build state management for complex data relationships
-
-## ✨ DRY & Clean Code Principles
-- Abstract repeated business logic into utilities or hooks (e.g., `useSymptomCart()`, `useSearchBusiness()`)
-- Prefer composition over duplication for business logic
-- Avoid magic strings/numbers—use constants/enums for business rules
-- Reuse business logic services where possible; centralize data validation and transformation
-- Create reusable business logic patterns for PRO-CTCAE compliance
-
-## 🎨 Styling Guidelines
-- Use **Tailwind CSS** for minimal styling when creating business logic components
-  - Extend it via `tailwind.config.js` if needed
-- Prefer utility classes over custom CSS unless necessary
-- Place global styles in [app/globals.css](mdc:spots-app/app/globals.css)
-- Focus on functional styling rather than visual design
-- Ensure business logic components are accessible and responsive
-
-## ☁️ Backend & Amplify Guidelines
-- Use **AWS Amplify Gen2** patterns
-- Organize backend logic inside [amplify/](mdc:spots-app/amplify)
-- Use `amplify sandbox` for local development
-- Test authentication flows thoroughly before deployment
-- Prefer declarative auth logic using Amplify Auth helpers
-
-## 📊 Data Integration & REDCap
-- **No Fallbacks During Development**: At this point in the project (development), we should not use fallbacks because we need to make sure all data is pulled/used from REDCap. When we use fallbacks, it creates a false sense that the feature/functionality is working when it may not be properly integrated with REDCap.
-- All data must come from REDCap APIs during development
-- Ensure proper error handling when REDCap data is unavailable (fail explicitly rather than silently falling back)
-- Test with real REDCap data to validate integration
-
-## ✅ Testing & QA
-- Implement and test **error boundaries** at layout and page levels
-- Validate data integrity and user roles
-- Test accessibility with tools like axe DevTools
-- Perform usability checks across pediatric age ranges and caregiver roles
-- Create tests for both **happy path** and **edge cases**
-
-## 🚀 Deployment
-- Use **AWS Amplify** for builds & deployment
-- Configure build process in [amplify.yml](mdc:spots-app/amplify.yml)
-- Define all required **env vars** in the Amplify console
-- Test in staging before pushing to production
-
-## 🔐 Security & Privacy
-- Never commit secrets or API keys (use `.env` files)
-- Sanitize all inputs and escape outputs
-- Apply least-privilege principles in auth/permissions
-- Follow HIPAA-like privacy standards for healthcare data
-- Run regular `npm audit` and update vulnerable packages
-
-## 📝 Documentation
-- Keep [README.md](mdc:spots-app/README.md) up-to-date
-- Use clear and concise **code comments**
-- Document API contracts and data shape changes
-- Maintain internal docs for healthcare teams and researchers
-
-## 🤝 Collaboration Guidelines
-- Use **descriptive commit messages**
-- Open PRs for all feature changes and bug fixes
-- Perform **code reviews** with security and accessibility in mind
-- Test all features on multiple screen sizes and assistive tech
-- Tag changes that may affect study data flow or compliance
-
-## 🧠 AI Suggestions
-- Suggest refactors that reduce repetition
-- Prefer modern Next.js/React patterns in suggestions
-- Automatically abstract duplicated logic into custom hooks
-- Flag code smells or legacy patterns for review
+- **Toolchain:** use the Node version in [.nvmrc](mdc:spots-app/.nvmrc); `npm install` / `npm run dev` / `npm run build`; ESLint + Prettier.
+- **TypeScript:** new code in TypeScript only; concise functional style (prefer functions over classes); names like `isLoading` / `hasError`; early returns for errors and edge cases.
+- **Structure:** put business logic in hooks and services under `app/_lib/` (not only in UI). Prefer composition and shared validation over copy-paste.
+- **REDCap (development):** no mock or silent fallbacks. All data must come from REDCap-backed APIs; if data is unavailable, fail explicitly so broken integration is obvious.
+- **Security:** never commit secrets (use `.env`); validate inputs on the server; sanitize/escape outputs; least-privilege auth.
+- **App UI/code patterns** (App Router, Tailwind, typing): follow `app-patterns` when editing `app/`.
+- **Amplify / Cognito backend:** follow `amplify-backend` when touching `amplify/` or auth services.
+- **SpotSymptoms:** reference-only — never modify (see `Do-not-modify`).
